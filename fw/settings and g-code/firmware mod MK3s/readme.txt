@@ -1,0 +1,1 @@
+commands M914 and M915 are enabled

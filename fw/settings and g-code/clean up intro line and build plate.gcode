@@ -61,12 +61,21 @@ M117 Clean print	; Indicate nozzle clean in progress on LCD
 ;M109 S<your temp>	; Uncomment to set your own temp  
 G21					; Set to metric 
 G90 				; Force coordinates to be absolute relative to the origin
-;M104 S0 ; turn off temperature
-;M140 S0 ; turn off heatbed
-;M107 ; turn off fan
+
+M140 S0 ; turn off heatbed
+
+
+
+
+; => demo setup start
 ;G28 W ; home all without mesh bed level
 G1 X100 Y50 Z10 F3000    :set some sample possition
-;
+; => demo setup end;
+
+
+
+
+
 M117 Kick model
 G91					; Set to Relative Positioning
 G1 Y-20 Z5 F1000		; up 
@@ -83,11 +92,22 @@ G1 Y100 Z5 F3000	; back and up
 G1 Y200 F3000		; go back
 
 ;add more filament to intro line
+M104 S215 ; set extruder temp
+M109 S215 ; wait for extruder temp
 
 G92 E0.0
 G1 X100 Y-3 F3000
 G1 Z0.4 F1000
-G1 X60.0 E7.0 F700.0 ; intro line
+G1 X60.0 E7.0 F700.0 ; intro line second layer
+G91					; Set to Relative Positioning
+G1 Z0.5 F1000
+G90 ; use absolute coordinates
+G1 X100.0 E7 F700.0 ; intro line third layer
+G91					; Set to Relative Positioning
+G1 Z0.5 F1000
+G90 ; use absolute coordinates
+G1 X60.0 E7.0 F700.0 ; intro line second layer
+
 G1 Z5 F1000
 
 
@@ -101,55 +121,69 @@ G1 Z5 F1000
 G1 X140 Y150 F3000
 G1 Y120 Z0.2 F9000
 
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X140 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X135 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X130 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X125 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X120 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X115 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X110 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X100 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X90 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X80 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X50 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X20 Y100 Z2 F5000
 
-G1 Y90 Z0.1
+G1 Y90 Z0
 G1 Y50 F9000
+G1 Y90 Z2
 G1 X00 Y100 Z2 F5000
 
 g28 x y 	; home x and y
@@ -196,4 +230,7 @@ G1 Y150 F3000		; go back
 M117 Should be clean
 
 
+M104 S0 ; turn off temperature
+M140 S0 ; turn off heatbed
+M107 ; turn off fan
 M84					; Motors off
