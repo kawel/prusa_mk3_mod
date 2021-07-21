@@ -33,8 +33,8 @@ G28 W ; home all without mesh bed level
 G80 ; mesh bed leveling
 G1 Y-3.0 F1000.0 ; go outside print area
 G92 E0.0
-G1 X60.0 E9.0 F1000.0 ; intro line
-G1 X100.0 E12.5 F1000.0 ; intro line
+G1 X60.0 E6.0 F1000.0 ; intro line
+G1 X100.0 E9.5 F1000.0 ; intro line
 G92 E0.0
 M221 S95
 
@@ -73,8 +73,6 @@ G1 Y-20 Z5 F1000		; up
 G1  Z-6 F1000		; down 1 below print top to knock off easier 
 G90 				; Force coordinates to be absolute relative to the origin
 G1 Y200 F3000		; back
-;G1 Y200 F3000	; back and down
-;G1 Y200 Z0 F3000	; back and down
 
 G1 Y80 F9000		; knock forward
 G1 Y100 Z5 F3000	; back and up
@@ -82,86 +80,116 @@ G1 Y150 F3000		; go back
 G1 Y200 Z0 F3000	; back and down
 G1 Y80 F5000			; knock forward
 G1 Y100 Z5 F3000	; back and up
-G1 Y100 F3000		; go back
+G1 Y200 F3000		; go back
 
-;add more filament to clean up stripe
+;add more filament to intro line
 
+G92 E0.0
 G1 X100 Y-3 F3000
 G1 Z0.4 F1000
-G1 X60.0 E9.0 F700.0 ; intro line
+G1 X60.0 E7.0 F700.0 ; intro line
 G1 Z5 F1000
 
 
 ;clean the stripe
+
+;M104 S0 ; turn off temperature
+;M140 S0 ; turn off heatbed
+;M107 ; turn off fan
 
 G1 Z5 F1000
 G1 X140 Y150 F3000
 G1 Y120 Z0.2 F9000
 
 G1 Y50 F9000
-G1 X130 Y100 F5000
+G1 X140 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X120 Y100 F5000
+G1 X135 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X110 Y100 F5000
+G1 X130 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X100 Y100 F5000
+G1 X125 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X90 Y100 F5000
+G1 X120 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X80 Y100 F5000
+G1 X115 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X50 Y100 F5000
+G1 X110 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X20 Y100 F5000
+G1 X100 Y100 Z2 F5000
 
+G1 Y90 Z0.1
 G1 Y50 F9000
-G1 X00 Y100 F5000
+G1 X90 Y100 Z2 F5000
 
+G1 Y90 Z0.1
+G1 Y50 F9000
+G1 X80 Y100 Z2 F5000
+
+G1 Y90 Z0.1
+G1 Y50 F9000
+G1 X50 Y100 Z2 F5000
+
+G1 Y90 Z0.1
+G1 Y50 F9000
+G1 X20 Y100 Z2 F5000
+
+G1 Y90 Z0.1
+G1 Y50 F9000
+G1 X00 Y100 Z2 F5000
+
+g28 x y 	; home x and y
 
 
 M117 Clean 1
 G1 X0 Y200  F2000	; move x and y
 G1 Y180 Z0 F3000	; forward and down
-G1 Y80 F5000			; knock forward
+G1 Y50 F5000			; knock forward
 G1 Y100 Z5 F3000	; back and up
 G1 Y150 F3000		; go back
 
 M117 Clean 2
 G1 X50 Y200  F2000	; move x and y
 G1 Y180 Z0 F3000	; forward and down
-G1 Y0 F5000			; knock forward
-G1 Y20 Z5 F3000	; back and up
+G1 Y50 F5000			; knock forward
+G1 Y70 Z5 F3000	; back and up
 G1 Y150 F3000		; go back
 
 M117 Clean 3
 G1 X100 Y200  F2000	; move x and y
 G1 Y180 Z0 F3000	; forward and down
-G1 Y0 F5000			; knock forward
-G1 Y20 Z5 F3000	; back and up
+G1 Y50 F5000			; knock forward
+G1 Y70 Z5 F3000	; back and up
 G1 Y150 F3000		; go back
 
 M117 Clean 4
 G1 X150 Y200  F2000	; move x and y
 G1 Y180 Z0 F3000	; forward and down
-G1 Y0 F5000			; knock forward
-G1 Y20 Z5 F3000	; back and up
+G1 Y50 F5000			; knock forward
+G1 Y70 Z5 F3000	; back and up
 G1 Y150 F3000		; go back
 
 M117 Clean 5
 G1 X200 Y200  F2000	; move x and y
 G1 Y180 Z0 F3000	; forward and down
-G1 Y0 F5000			; knock forward
-G1 Y20 Z5 F3000	; back and up
+G1 Y50 F5000			; knock forward
+G1 Y70 Z5 F3000	; back and up
 G1 Y150 F3000		; go back
-;
+
 
 
 
